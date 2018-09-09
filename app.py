@@ -15,7 +15,11 @@ async def file_handle(request):
     try:
         data = await request.post()
         config = json.load(open('config.json'))
-        return web.FileResponse(os.path.join('content', config.get('keys', {})[data['key']]))
+        filename = os.path.basename(config.get('keys', {})[data['key']])
+        return web.FileResponse(
+            os.path.join('content', config.get('keys', {})[data['key']]),
+            headers={'Content-Disposition': 'filename="%s"' % filename}
+        )
     except KeyError as e:
         log.debug(e)
         return web.Response(status=403)
