@@ -5,7 +5,7 @@ key must be provided in a post form data as 'key'
 
 ## tldr
 ```
-docker run --name key-protected-server -v ~/Projects/key-protected-server/config.json:/app/config.json -v  ~/Projects/key-protected-server/content/:/app/content/ -p 8080:8080 -d key-protected-server
+docker run --name key-protected-server -v ~/Projects/key-protected-server/config.json:/app/config.json -v  ~/Projects/key-protected-server/content/:/app/content/ -p 8080:8080 -d lerignoux/key-protected-server
 curl -X POST 'http://localhost:8080/' --data 'key=00000000-0000-1111-0000-000000000000' -o myFile.tar.gz
 ```
 
