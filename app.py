@@ -18,7 +18,7 @@ async def file_handle(request):
         filename = os.path.basename(config.get('keys', {})[data['key']])
         return web.FileResponse(
             os.path.join('content', config.get('keys', {})[data['key']]),
-            headers={'Content-Disposition': 'filename="%s"' % filename}
+            headers={'Content-Disposition': 'attachment; filename="%s"' % filename}
         )
     except KeyError as e:
         log.debug(e)
